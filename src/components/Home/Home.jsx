@@ -1,43 +1,10 @@
 import { Rating } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { AiOutlineShopping } from "react-icons/ai";
 import "./home.scss";
 import { MdAddShoppingCart } from "react-icons/md";
 import SideCart from "./SideCart";
 
-const Home = ({ cart, setCart, openCart, setOpenCart }) => {
-  const [data, setData] = useState([]);
-
-  const params = useParams();
-
-  let route = "";
-  switch (params.id) {
-    case "elect":
-      route = "category/electronics";
-      break;
-    case "jewel":
-      route = "category/jewelery";
-      break;
-    case "men's":
-      route = "category/men's%20clothing";
-      break;
-    case "women":
-      route = "category/women's%20clothing";
-      break;
-    case "all":
-      route = "";
-      break;
-
-    default:
-      break;
-  }
-  useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${route}`)
-      .then((res) => res.json())
-      .then((json) => setData(json));
-  }, [route]);
-
+const Home = ({ cart, setCart, openCart, setOpenCart, data }) => {
   const handleAdd = (product) => {
     const exist = cart?.find((x) => x.id === product.id);
     if (exist) {
