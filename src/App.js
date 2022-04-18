@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Nav, Home, Greet } from "./components";
-import { useParams } from "react-router";
 
 const App = () => {
   const [categories, setCategories] = useState([]);
   const [cart, setCart] = useState([]);
   const [openCart, setOpenCart] = useState(false);
   const [data, setData] = useState([]);
-  const params = useParams();
+
+  const [route, setRoute] = useState("");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/categories")
@@ -16,32 +16,11 @@ const App = () => {
       .then((json) => setCategories(json));
   }, []);
 
-  let route = "";
-  switch (params.id) {
-    case "elect":
-      route = "category/electronics";
-      break;
-    case "jewel":
-      route = "category/jewelery";
-      break;
-    case "men's":
-      route = "category/men's%20clothing";
-      break;
-    case "women":
-      route = "category/women's%20clothing";
-      break;
-    case "all":
-      route = "";
-      break;
-
-    default:
-      break;
-  }
-
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${route}`)
       .then((res) => res.json())
       .then((json) => setData(json));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route]);
 
   return (
@@ -54,6 +33,7 @@ const App = () => {
             path="/shop/:id"
             element={
               <Home
+                setRoute={setRoute}
                 data={data}
                 cart={cart}
                 setCart={setCart}

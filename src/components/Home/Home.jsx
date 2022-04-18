@@ -3,8 +3,34 @@ import { AiOutlineShopping } from "react-icons/ai";
 import "./home.scss";
 import { MdAddShoppingCart } from "react-icons/md";
 import SideCart from "./SideCart";
+import { useEffect } from "react";
+import { useParams } from "react-router";
 
-const Home = ({ cart, setCart, openCart, setOpenCart, data }) => {
+const Home = ({ cart, setCart, openCart, setOpenCart, data, setRoute }) => {
+  const params = useParams();
+  useEffect(() => {
+    switch (params.id) {
+      case "elect":
+        setRoute("category/electronics");
+        break;
+      case "jewel":
+        setRoute("category/jewelery");
+        break;
+      case "men's":
+        setRoute("category/men's%20clothing");
+        break;
+      case "women":
+        setRoute("category/women's%20clothing");
+        break;
+      case "all":
+        setRoute("");
+        break;
+
+      default:
+        break;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
   const handleAdd = (product) => {
     const exist = cart?.find((x) => x.id === product.id);
     if (exist) {
