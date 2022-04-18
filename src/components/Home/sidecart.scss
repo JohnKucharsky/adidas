@@ -9,8 +9,10 @@
   width: 0;
   transition: all 0.5s linear;
   z-index: 3;
-  padding-top: 2rem;
-
+  padding-top: 1rem;
+  h2 {
+    margin-left: 2rem;
+  }
   &__close {
     position: absolute;
     top: 1rem;

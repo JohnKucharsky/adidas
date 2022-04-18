@@ -40,6 +40,7 @@ const SideCart = ({
       <div className="sidecart__close">
         <AiOutlineClose onClick={() => ref.current.classList.remove("open")} />
       </div>
+      <h2>Cart</h2>
       {cart.map((i, index) => (
         <div key={index} className="sidecart__position">
           <img src={i.image} alt="" />
