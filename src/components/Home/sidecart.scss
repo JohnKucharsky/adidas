@@ -9,7 +9,17 @@
   width: 0;
   transition: all 0.5s linear;
   z-index: 3;
+  padding-top: 2rem;
 
+  &__close {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
   &__position {
     display: flex;
     align-items: center;

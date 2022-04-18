@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
+import { AiOutlineClose } from "react-icons/ai";
 import {
   IoIosAddCircleOutline,
   IoIosRemoveCircleOutline,
@@ -36,6 +37,9 @@ const SideCart = ({
   };
   return (
     <div ref={ref} className="sidecart">
+      <div className="sidecart__close">
+        <AiOutlineClose onClick={() => ref.current.classList.remove("open")} />
+      </div>
       {cart.map((i, index) => (
         <div key={index} className="sidecart__position">
           <img src={i.image} alt="" />
