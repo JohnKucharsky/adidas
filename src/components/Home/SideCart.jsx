@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import { BsFillTrashFill } from "react-icons/bs";
 import {
   IoIosAddCircleOutline,
   IoIosRemoveCircleOutline,
@@ -39,10 +40,14 @@ const SideCart = ({
         <div key={index} className="sidecart__position">
           <img src={i.image} alt="" />
           <div className="sidecart__position--container">
-            <h3>{i.title}</h3>
-            <p onClick={() => removeFromCart(i)}>&times;</p>
-            <h4>{i.price * i.qty}</h4>
-            <h5>{i.qty}</h5>
+            <h4>
+              {(i.price * i.qty).toString().match(/^-?\d+(?:\.\d{0,2})?/)}$
+            </h4>
+            <p>{i.title}</p>
+            <h5 onClick={() => removeFromCart(i)}>
+              <BsFillTrashFill />
+            </h5>
+            <h4>Qty: {i.qty}</h4>
             <div className="sidecart__position--addrem">
               <IoIosRemoveCircleOutline onClick={() => handleRemove(i)} />
               <IoIosAddCircleOutline onClick={() => handleAdd(i)} />
@@ -50,7 +55,12 @@ const SideCart = ({
           </div>
         </div>
       ))}
-      <h5>{itemsPrice}</h5>
+      <div className="sidecart__total">
+        <div>
+          Total <span>(VAT included)</span>
+        </div>
+        <div>{itemsPrice.toString().match(/^-?\d+(?:\.\d{0,2})?/)}$</div>
+      </div>
     </div>
   );
 };
