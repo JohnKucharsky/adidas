@@ -1,0 +1,49 @@
+@use "../../breakpoints" as *;
+
+.sidecart {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: #fff;
+  width: 0;
+  transition: all 1s linear;
+  z-index: 3;
+
+  &__position {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0.3rem 0;
+    border: 1px solid black;
+    padding: 0.5rem 0.2rem;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+    &--container {
+      height: 100px;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: 3fr 1fr;
+      padding: 0.2rem;
+    }
+    h3 {
+      font-size: 0.9rem;
+      overflow: hidden;
+    }
+    h4 {
+      align-self: end;
+    }
+    p {
+      justify-self: end;
+    }
+    &--addrem {
+      justify-self: end;
+      align-self: end;
+    }
+  }
+}
+.open {
+  width: 400px;
+}

@@ -1,0 +1,68 @@
+@use "../../breakpoints" as *;
+.home {
+  width: 90%;
+  margin: 2rem auto;
+  max-width: 1500px;
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: 0.5rem;
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+    &--cart {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.3rem 0.3rem 0 0;
+      .MuiRating-root {
+        color: black;
+        font-size: 1.2rem;
+      }
+    }
+    &--cartitem {
+      font-size: 1.5rem;
+      transition: all 0.2s linear;
+      &:hover {
+        z-index: 2;
+        color: rgb(126, 119, 119) !important;
+      }
+    }
+    &--item {
+      position: relative;
+      padding: 0.5rem;
+      img {
+        max-height: 300px;
+        width: 100%;
+        object-fit: cover;
+        @include lg {
+          max-height: 200px;
+        }
+      }
+      &:hover {
+        border: 1px solid black;
+      }
+      h5 {
+        font-weight: 500;
+      }
+      p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+        border-width: 0 1px 1px 0;
+        border-style: solid;
+        border-color: rgb(218, 202, 202);
+      }
+    }
+  }
+}
